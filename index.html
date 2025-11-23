@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Push Me Site</title>  
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      position: relative;
+      background: #111; /* fallback gelap */
+      overflow: hidden;
+    }
+
+    /* Teks MADRID dengan gradasi pink, glow, dan background putih */
+    .bg-text {
+      position: absolute;
+      top: 35%; /* naik sedikit */
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 80px; /* lebih kecil */
+      font-weight: bold;
+      font-family: sans-serif;
+      padding: 10px 20px;
+      background: white; /* background putih di belakang huruf */
+      border-radius: 10px;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(45deg, #ff7eb3, #ff758c, #ffa0c0); /* gradasi pink */
+      text-shadow: 0 0 10px rgba(255,127,179,0.6),
+                   0 0 20px rgba(255,117,140,0.4);
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+    }
+
+    .push-btn {
+      padding: 15px 30px;
+      font-size: 20px;
+      background: linear-gradient(45deg, #ff7eb3, #ff758c);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 120, 175, 0.4);
+      transition: 0.2s;
+      z-index: 10;
+      position: relative;
+    }
+
+    .push-btn:hover {
+      transform: scale(1.06);
+    }
+
+    video {
+      margin-top: 20px;
+      max-width: 90%;
+      display: none;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-text">MADRID</div>
+
+  <button class="push-btn" onclick="showVideo()">PUSH ME</button>
+  <video id="myVideo" controls></video> <!-- src dikosongin -->
+
+  <script>
+    const LOCAL_FILENAME = "video.mp4"; // taro file videonya di folder yang sama
+
+    function showVideo() {
+      const vid = document.getElementById("myVideo");
+      vid.src = LOCAL_FILENAME; // baru diisi saat tombol ditekan
+      vid.style.display = "block";
+      vid.play(); // biar langsung main
+    }
+  </script>
+</body>
+</html>
